@@ -12,7 +12,7 @@ function App() {
         <div className="header-left-block">
           <img src={logo} alt="logo" />
         </div>
-        <div>{/* выплывающий список */}</div>
+        <div>{/* выплывающий sписок */}</div>
         <div className="header-right-block">
           <label className="switch">
             <input type="checkbox" className="switch-input" />
