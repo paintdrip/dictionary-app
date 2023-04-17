@@ -1,0 +1,106 @@
+@import 'StandartReset';
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap');
+
+* {
+  font-family: 'JetBrains Mono', monospace;
+  background-color: black;
+}
+
+.main {
+  max-width: 740px;
+  margin: auto;
+}
+
+.header {
+  padding-top: 3rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 10px;
+
+  &-left-block {
+    cursor: pointer;
+  }
+
+  &-right-block {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+// переключатель темы
+
+.switch {
+  display: inline-block;
+  position: relative;
+  width: 50px;
+  height: 24px;
+
+  &-input {
+    height: 0;
+    width: 0;
+    opacity: 0;
+    &:checked + .switch-span {
+      background-color: rgb(161, 161, 161);
+    }
+
+    &:hover + .switch-span {
+      background-color: rgb(207, 30, 198);
+    }
+
+    &:checked + .switch-span::before {
+      transform: translateX(26px);
+      -webkit-transform: translateX(26px);
+      -ms-transform: translateX(26px);
+    }
+  }
+
+  &-span {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgb(207, 30, 198);
+    border-radius: 34px;
+    transition: 0.4s;
+
+    &::before {
+      content: '';
+      position: absolute;
+      cursor: pointer;
+      left: 4px;
+      bottom: 4px;
+      height: 16px;
+      width: 16px;
+      background-color: rgb(255, 255, 255);
+      border-radius: 50%;
+      transition: 0.4s;
+    }
+  }
+}
+
+// иконка луны
+.moon {
+  margin-top: 1px;
+  margin-left: 1rem;
+}
+
+// основной инпут
+.input-block {
+  padding-top: 3rem;
+}
+
+.input {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 1rem;
+  border: 0;
+  background-color: rgba(23, 23, 23, 0.808);
+  color: aliceblue;
+  font-size: 1.1rem;
+  font-weight: bolder;
+}
