@@ -2,9 +2,22 @@
 
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap');
 
+:root {
+  --textcolor: #e2e2e2;
+  --bgcolor: #000000;
+  --inputcolor: rgba(23, 23, 23, 0.808);
+}
+
+.theme-white {
+  --textcolor: #1a1a1c;
+  --bgcolor: #ffffff;
+  --inputcolor: rgba(201, 201, 201, 0.808);
+}
+
 * {
   font-family: 'JetBrains Mono', monospace;
-  background-color: black;
+  background-color: var(--bgcolor);
+  color: var(--textcolor);
 }
 
 .main {
@@ -86,7 +99,7 @@
 // иконка луны
 .moon {
   margin-top: 1px;
-  margin-left: 1rem;
+  margin-right: 1rem;
 }
 
 // основной инпут
@@ -99,8 +112,104 @@
   padding: 1rem;
   border-radius: 1rem;
   border: 0;
-  background-color: rgba(23, 23, 23, 0.808);
-  color: aliceblue;
+  background-color: var(--inputcolor);
+  color: var(--textcolor);
   font-size: 1.1rem;
   font-weight: bolder;
+}
+
+// блок вывода
+
+.blocktext {
+  margin-top: 2rem;
+}
+
+.textmain {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+
+  &-h1 {
+    font-size: 48px;
+  }
+
+  &-p {
+    color: rgb(207, 30, 198);
+  }
+
+  &-logo {
+    opacity: 0.7;
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+.noun {
+  margin-top: 1.5rem;
+  font-style: italic;
+
+  &::after {
+    margin-left: 35px;
+    margin-bottom: 5px;
+    box-sizing: border-box;
+    display: inline-block;
+    content: '';
+    width: 50%;
+    height: 1px;
+    background-color: var(--textcolor);
+  }
+}
+
+.nounblock {
+  margin-top: 1.5rem;
+
+  &-ul {
+    width: 100%;
+    margin: 50px;
+  }
+  // пофиксить
+  &-li {
+    position: relative;
+    list-style: none;
+
+    &::before {
+      position: absolute;
+      display: inline-block;
+      content: '\2022';
+      color: rgb(207, 30, 198);
+      font-weight: 700;
+      width: 1em;
+      margin-top: 0.3em;
+      margin-left: -1em;
+    }
+  }
+
+  &-p {
+    opacity: 0.5;
+  }
+}
+
+.source {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid white;
+
+  &-ul {
+    margin-top: 0.5rem;
+    list-style: none;
+    padding-left: 0;
+  }
+
+  &-a {
+    display: flex;
+    flex-direction: row;
+    text-decoration: none;
+    padding-bottom: 10rem;
+  }
+
+  &-img {
+    margin-left: 8px;
+  }
 }
