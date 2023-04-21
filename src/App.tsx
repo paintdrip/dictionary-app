@@ -3,6 +3,8 @@ import './scss/App.scss';
 
 import logo from './assets/img/logo.svg';
 import moon from './assets/img/icon-moon.svg';
+import search from './assets/img/icon-search.svg';
+
 import axios from 'axios';
 import Answer from './components/Answer';
 
@@ -13,7 +15,8 @@ function App() {
 
   const api = 'https://api.dictionaryapi.dev/api/v2/entries/en';
 
-  async function handleSearch() {
+  async function handleSearch(e: React.FormEvent) {
+    e.preventDefault();
     try {
       const res = await axios.get(`${api}/${keyWord}`);
       setResult(res.data[0]);
@@ -46,15 +49,16 @@ function App() {
           </div>
         </header>
         {/* Поле для ввода */}
-        <div className="input-block">
+        <form onSubmit={handleSearch} className="input-block">
           <input
+            autoFocus
             className="input"
             placeholder="Search for any word..."
             type="text"
             onChange={changeHandler}
           />
-          <button onClick={handleSearch}>Submit</button>
-        </div>
+          {/* <button onClick={handleSearch}>Submit</button> */}
+        </form>
         {/* Ответ от api */}
         {result && <Answer {...{ result }} />}
       </div>

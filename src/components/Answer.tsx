@@ -9,6 +9,8 @@ type apiProps = {
 const Answer: React.FC<apiProps> = ({ result }) => {
   const { word, phonetic, meanings, sourceUrls } = result;
 
+  console.log(result);
+
   return (
     <div className="blocktext">
       <section className="textmain">
@@ -23,17 +25,22 @@ const Answer: React.FC<apiProps> = ({ result }) => {
         <h3>Meaning</h3>
         <ul className="nounblock-ul">
           {meanings[0].definitions.map((obj: any) => (
-            <li className="nounblock-li">{obj.definition}</li>
+            <>
+              <li className="nounblock-li">{obj.definition}</li>
+              <p className="nounblock-p">{obj.example}</p>
+            </>
           ))}
-          {/* <li className="nounblock-li">{meanings[0].definitions[0].definition || ''}</li>
-          <p className="nounblock-p">{meanings[0].definitions[0].example || ''}</p>
-          <li className="nounblock-li">{meanings[0].definitions[1].definition || ''}</li>
-          <p className="nounblock-p">{meanings[0].definitions[0].example || ''}</p>
-          <li className="nounblock-li">{meanings[0].definitions[0].definition || ''}</li>
-          <p className="nounblock-p">{meanings[0].definitions[0].example || ''}</p>
-          <li className="nounblock-li">{meanings[0].definitions[0].definition || ''}</li>
-          <p className="nounblock-p">{meanings[0].definitions[0].example || ''}</p> */}
         </ul>
+        <div className="synonym">
+          {meanings[0].synonyms > [] && <p className="synonym-title">Synonyms</p>}
+          <ul className="synonym-ul">
+            {meanings[0].synonyms.map((obj: any, index: any) => (
+              <li key={index} className="synonym-li">
+                {obj}
+              </li>
+            ))}
+          </ul>
+        </div>
       </section>
       <h2 className="noun">verb</h2>
       <section className="nounblock">
@@ -47,7 +54,7 @@ const Answer: React.FC<apiProps> = ({ result }) => {
       <h4 className="source">Source</h4>
       <ul className="source-ul">
         <li>
-          <a className="source-a" href={sourceUrls[0] || ''}>
+          <a target="_blank" className="source-a" href={sourceUrls[0] || ''}>
             <span>{sourceUrls[0] || ''}</span>
             <img className="source-img" src={link} aria-hidden="true"></img>
           </a>
