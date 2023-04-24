@@ -10,7 +10,7 @@ import Answer from './components/Answer';
 
 function App() {
   const [theme, setTheme] = React.useState(false);
-  const [keyWord, setKeyWord] = React.useState(false);
+  const [keyWord, setKeyWord] = React.useState('');
   const [result, setResult] = React.useState(null);
 
   const api = 'https://api.dictionaryapi.dev/api/v2/entries/en';
@@ -25,6 +25,11 @@ function App() {
     }
   }
 
+  function handleClear() {
+    setKeyWord('');
+    setResult(null);
+  }
+
   const changeHandler = (e: any) => {
     setKeyWord(e.target.value);
   };
@@ -35,7 +40,7 @@ function App() {
         {/* Шапка сайта */}
         <header className="header">
           <div className="header-left-block">
-            <img src={logo} alt="logo" />
+            <img src={logo} alt="logo" onClick={handleClear} />
           </div>
           <div>{/* выплывающий sписок */}</div>
           <div className="header-right-block">
@@ -51,6 +56,7 @@ function App() {
         {/* Поле для ввода */}
         <form onSubmit={handleSearch} className="input-block">
           <input
+            value={keyWord}
             autoFocus
             className="input"
             placeholder="Search for any word..."

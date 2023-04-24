@@ -7,8 +7,18 @@ type apiProps = {
 };
 
 const Answer: React.FC<apiProps> = ({ result }) => {
-  const { word, phonetic, meanings, sourceUrls } = result;
+  const { word, phonetics, phonetic, meanings, sourceUrls } = result;
 
+  function playPhonetics() {
+    try {
+      let audio = new Audio(phonetics[0].audio);
+      audio.play();
+    } catch (e) {
+      console.log({ e });
+    }
+  }
+
+  // потом убрать
   console.log(result);
 
   return (
@@ -18,9 +28,12 @@ const Answer: React.FC<apiProps> = ({ result }) => {
           <h1 className="textmain-h1">{word}</h1>
           <p className="textmain-p">{phonetic}</p>
         </div>
-        <img src={play} alt="logo" className="textmain-logo" />
+        <img src={play} onClick={playPhonetics} alt="logo" className="textmain-logo" />
       </section>
-      <h2 className="noun">noun</h2>
+      <div className="blocknoun">
+        <h2 className="noun">noun</h2>
+        <div className="noun-after"></div>
+      </div>
       <section className="nounblock">
         <h3>Meaning</h3>
         <ul className="nounblock-ul">
@@ -31,26 +44,119 @@ const Answer: React.FC<apiProps> = ({ result }) => {
             </>
           ))}
         </ul>
+        {meanings[0].antonyms > [] && (
+          <div className="synonym">
+            <p className="synonym-title">Antonyms</p>
+            <ul className="synonym-ul">
+              {meanings[0].antonyms.map((obj: any, index: any) => (
+                <li key={index} className="synonym-li">
+                  {obj}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+        {meanings[0].synonyms > [] && (
+          <div className="synonym">
+            <p className="synonym-title">Antonyms</p>
+            <ul className="synonym-ul">
+              {meanings[0].synonyms.map((obj: any, index: any) => (
+                <li key={index} className="synonym-li">
+                  {obj}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </section>
+      <div className="blocknoun">
+        <h2 className="noun">verb</h2>
+        <div className="noun-after"></div>
+      </div>
+      <section className="nounblock">
+        <h3>Meaning</h3>
+        <ul className="nounblock-ul">
+          {meanings[1].definitions.map((obj: any) => (
+            <>
+              <li className="nounblock-li">{obj.definition}</li>
+              <p className="nounblock-p">{obj.example}</p>
+            </>
+          ))}
+        </ul>
+      </section>
+      {meanings[1].antonyms > [] && (
         <div className="synonym">
-          {meanings[0].synonyms > [] && <p className="synonym-title">Synonyms</p>}
+          <p className="synonym-title">Antonyms</p>
           <ul className="synonym-ul">
-            {meanings[0].synonyms.map((obj: any, index: any) => (
+            {meanings[1].antonyms.map((obj: any, index: any) => (
               <li key={index} className="synonym-li">
                 {obj}
               </li>
             ))}
           </ul>
         </div>
-      </section>
-      <h2 className="noun">verb</h2>
-      <section className="nounblock">
-        <h3>Meaning</h3>
-        <ul className="nounblock-ul">
-          {meanings[1].definitions.map((obj: any) => (
-            <li className="nounblock-li">{obj.definition}</li>
-          ))}
-        </ul>
-      </section>
+      )}
+      {meanings[1].synonyms > [] && (
+        <div className="synonym">
+          <p className="synonym-title">Antonyms</p>
+          <ul className="synonym-ul">
+            {meanings[1].synonyms.map((obj: any, index: any) => (
+              <li key={index} className="synonym-li">
+                {obj}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+      {/* interj */}
+      {meanings[2] && (
+        <>
+          <div>
+            <div className="blocknoun">
+              <h2 className="noun">interjection</h2>
+              <div className="noun-after"></div>
+            </div>
+            <section className="nounblock">
+              <h3>Meaning</h3>
+              <ul className="nounblock-ul">
+                {meanings[2].definitions.map((obj: any) => (
+                  <>
+                    <li className="nounblock-li">{obj.definition}</li>
+                    <p className="nounblock-p">{obj.example}</p>
+                  </>
+                ))}
+              </ul>
+            </section>
+          </div>
+          {/* synonym */}
+          {meanings[2].antonyms > [] && (
+            <div className="synonym">
+              <p className="synonym-title">Antonyms</p>
+              <ul className="synonym-ul">
+                {meanings[2].antonyms.map((obj: any, index: any) => (
+                  <li key={index} className="synonym-li">
+                    {obj}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+          {/* antonym */}
+          {meanings[2].synonyms > [] && (
+            <div className="synonym">
+              <p className="synonym-title">Antonyms</p>
+              <ul className="synonym-ul">
+                {meanings[2].synonyms.map((obj: any, index: any) => (
+                  <li key={index} className="synonym-li">
+                    {obj}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </>
+      )}
+      {/* source block */}
       <h4 className="source">Source</h4>
       <ul className="source-ul">
         <li>

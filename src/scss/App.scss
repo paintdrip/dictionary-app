@@ -148,18 +148,21 @@
   }
 }
 
-.noun {
+.blocknoun {
   margin-top: 1.5rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.noun {
   font-style: italic;
 
-  &::after {
-    margin-left: 35px;
-    margin-bottom: 5px;
-    display: inline-block;
-    content: '';
-    width: 647px;
-    height: 1px;
+  &-after {
+    margin-left: 1rem;
     background-color: var(--textcolor);
+    height: 1px;
+    flex: 1;
   }
 }
 
@@ -201,6 +204,7 @@
     margin-top: 0.5rem;
     list-style: none;
     padding-left: 0;
+    overflow-wrap: break-word;
   }
 
   &-a {
@@ -208,6 +212,7 @@
     flex-direction: row;
     text-decoration: none;
     padding-bottom: 10rem;
+    word-break: break-all;
   }
 
   &-img {
@@ -259,5 +264,11 @@
     height: 18px;
     width: 18px;
     cursor: pointer;
+  }
+}
+
+@media (max-width: 800px) {
+  .main {
+    margin: 0px 30px;
   }
 }
