@@ -3,7 +3,6 @@ import './scss/App.scss';
 
 import logo from './assets/img/logo.svg';
 import moon from './assets/img/icon-moon.svg';
-import search from './assets/img/icon-search.svg';
 
 import axios from 'axios';
 import Answer from './components/Answer';

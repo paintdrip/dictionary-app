@@ -58,7 +58,7 @@ const Answer: React.FC<apiProps> = ({ result }) => {
         )}
         {meanings[0].synonyms > [] && (
           <div className="synonym">
-            <p className="synonym-title">Antonyms</p>
+            <p className="synonym-title">Synonyms</p>
             <ul className="synonym-ul">
               {meanings[0].synonyms.map((obj: any, index: any) => (
                 <li key={index} className="synonym-li">
@@ -98,7 +98,7 @@ const Answer: React.FC<apiProps> = ({ result }) => {
       )}
       {meanings[1].synonyms > [] && (
         <div className="synonym">
-          <p className="synonym-title">Antonyms</p>
+          <p className="synonym-title">Synonyms</p>
           <ul className="synonym-ul">
             {meanings[1].synonyms.map((obj: any, index: any) => (
               <li key={index} className="synonym-li">
@@ -131,7 +131,7 @@ const Answer: React.FC<apiProps> = ({ result }) => {
           {/* synonym */}
           {meanings[2].antonyms > [] && (
             <div className="synonym">
-              <p className="synonym-title">Antonyms</p>
+              <p className="synonym-title">Synonyms</p>
               <ul className="synonym-ul">
                 {meanings[2].antonyms.map((obj: any, index: any) => (
                   <li key={index} className="synonym-li">
@@ -144,7 +144,7 @@ const Answer: React.FC<apiProps> = ({ result }) => {
           {/* antonym */}
           {meanings[2].synonyms > [] && (
             <div className="synonym">
-              <p className="synonym-title">Antonyms</p>
+              <p className="synonym-title">Synonyms</p>
               <ul className="synonym-ul">
                 {meanings[2].synonyms.map((obj: any, index: any) => (
                   <li key={index} className="synonym-li">
