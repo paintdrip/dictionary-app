@@ -171,12 +171,13 @@
 
   &-ul {
     width: 100%;
-    margin: 50px;
+    padding-left: 1rem;
   }
   // пофиксить
   &-li {
     position: relative;
     list-style: none;
+    margin-bottom: 0.3rem;
 
     &::before {
       position: absolute;
@@ -185,12 +186,12 @@
       color: rgb(207, 30, 198);
       font-weight: 700;
       width: 1em;
-      margin-top: 0.3em;
       margin-left: -1em;
     }
   }
 
   &-p {
+    margin-bottom: 0.3rem;
     opacity: 0.5;
   }
 }
