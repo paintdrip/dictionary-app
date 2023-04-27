@@ -6,21 +6,26 @@ import moon from './assets/img/icon-moon.svg';
 
 import axios from 'axios';
 import Answer from './components/Answer';
+import LoadingBlock from './components/LoadingBlock';
 
 function App() {
   const [theme, setTheme] = React.useState(false);
   const [keyWord, setKeyWord] = React.useState('');
   const [result, setResult] = React.useState(null);
+  const [isloading, setIsloading] = React.useState(false);
 
   const api = 'https://api.dictionaryapi.dev/api/v2/entries/en';
 
   async function handleSearch(e: React.FormEvent) {
+    setIsloading(true);
     e.preventDefault();
     try {
       const res = await axios.get(`${api}/${keyWord}`);
       setResult(res.data[0]);
+      setIsloading(false);
     } catch (e) {
       console.log({ e });
+      setIsloading(false);
     }
   }
 
@@ -65,7 +70,7 @@ function App() {
           {/* <button onClick={handleSearch}>Submit</button> */}
         </form>
         {/* Ответ от api */}
-        {result && <Answer {...{ result }} />}
+        {isloading ? <LoadingBlock /> : result && <Answer {...{ result }} />}
       </div>
     </div>
   );
