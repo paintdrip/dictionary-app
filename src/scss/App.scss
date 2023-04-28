@@ -1,23 +1,16 @@
 @import 'StandartReset';
+@import 'Variables';
 
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap');
 
-:root {
-  --textcolor: #e2e2e2;
-  --bgcolor: #000000;
-  --inputcolor: rgba(23, 23, 23, 0.808);
-}
-
-.theme-white {
-  --textcolor: #1a1a1c;
-  --bgcolor: #ffffff;
-  --inputcolor: rgba(201, 201, 201, 0.808);
+body {
+  background: var(#{--bgcolor-default});
 }
 
 * {
   font-family: 'JetBrains Mono', monospace;
-  background-color: var(--bgcolor);
-  color: var(--textcolor);
+  // background-color: var(--bgcolor);
+  color: var(#{--textcolor-default});
 }
 
 .main {
@@ -114,8 +107,8 @@
   padding: 1rem;
   border-radius: 1rem;
   border: 0;
-  background-color: var(--inputcolor);
-  color: var(--textcolor);
+  background-color: var(#{--inputcolor-default});
+  color: var(#{--textcolor-default});
   font-size: 1.1rem;
   font-weight: bolder;
 }
@@ -160,7 +153,7 @@
 
   &-after {
     margin-left: 1rem;
-    background-color: var(--textcolor);
+    background-color: var(#{--textcolor-default});
     height: 1px;
     flex: 1;
   }

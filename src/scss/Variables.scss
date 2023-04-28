@@ -1,0 +1,25 @@
+$bgcolor-dark: #000000;
+$bgcolor-light: #ffffff;
+
+$textcolor-dark: #e2e2e2;
+$textcolor-light: #1a1a1c;
+
+$inputcolor-dark: rgba(23, 23, 23, 0.808);
+$inputcolor-light: rgba(201, 201, 201, 0.808);
+
+:root {
+  // цвет фона
+  --bgcolor-dark: #{$bgcolor-dark};
+  --bgcolor-light: #{$bgcolor-light};
+  --bgcolor-default: var(#{--bgcolor-dark});
+
+  // цвет текста
+  --textcolor-dark: #{$textcolor-dark};
+  --textcolor-light: #{$textcolor-light};
+  --textcolor-default: var(#{--textcolor-dark});
+
+  // цвет инпута
+  --inputcolor-dark: #{$inputcolor-dark};
+  --inputcolor-light: #{$inputcolor-light};
+  --inputcolor-default: var(#{--inputcolor-dark});
+}

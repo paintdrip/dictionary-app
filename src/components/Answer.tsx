@@ -3,11 +3,24 @@ import play from '../assets/img/icon-play.svg';
 import link from '../assets/img/icon-new-window.svg';
 
 type apiProps = {
-  result: any;
+  result: {
+    word: string;
+    phonetic: string;
+    phonetics: any[];
+    meanings: any[];
+    sourceUrls: string[];
+  };
 };
 
+interface definitionsType {
+  antonyms: string[];
+  definition: string;
+  example: string;
+  synonyms: string[];
+}
+
 const Answer: React.FC<apiProps> = ({ result }) => {
-  const { word, phonetics, phonetic, meanings, sourceUrls } = result;
+  const { word, phonetic, phonetics, meanings, sourceUrls } = result;
 
   function playPhonetics() {
     try {
@@ -37,7 +50,7 @@ const Answer: React.FC<apiProps> = ({ result }) => {
       <section className="nounblock">
         <h3>Meaning</h3>
         <ul className="nounblock-ul">
-          {meanings[0].definitions.map((obj: any) => (
+          {meanings[0].definitions.map((obj: definitionsType) => (
             <>
               <li className="nounblock-li">{obj.definition}</li>
               <p className="nounblock-p">{obj.example}</p>
@@ -48,7 +61,7 @@ const Answer: React.FC<apiProps> = ({ result }) => {
           <div className="synonym">
             <p className="synonym-title">Antonyms</p>
             <ul className="synonym-ul">
-              {meanings[0].antonyms.map((obj: any, index: any) => (
+              {meanings[0].antonyms.map((obj: string, index: number) => (
                 <li key={index} className="synonym-li">
                   {obj}
                 </li>
@@ -60,7 +73,7 @@ const Answer: React.FC<apiProps> = ({ result }) => {
           <div className="synonym">
             <p className="synonym-title">Synonyms</p>
             <ul className="synonym-ul">
-              {meanings[0].synonyms.map((obj: any, index: any) => (
+              {meanings[0].synonyms.map((obj: string, index: number) => (
                 <li key={index} className="synonym-li">
                   {obj}
                 </li>
@@ -76,7 +89,7 @@ const Answer: React.FC<apiProps> = ({ result }) => {
       <section className="nounblock">
         <h3>Meaning</h3>
         <ul className="nounblock-ul">
-          {meanings[1].definitions.map((obj: any) => (
+          {meanings[1].definitions.map((obj: definitionsType) => (
             <>
               <li className="nounblock-li">{obj.definition}</li>
               <p className="nounblock-p">{obj.example}</p>
@@ -88,7 +101,7 @@ const Answer: React.FC<apiProps> = ({ result }) => {
         <div className="synonym">
           <p className="synonym-title">Antonyms</p>
           <ul className="synonym-ul">
-            {meanings[1].antonyms.map((obj: any, index: any) => (
+            {meanings[1].antonyms.map((obj: string, index: number) => (
               <li key={index} className="synonym-li">
                 {obj}
               </li>
@@ -100,7 +113,7 @@ const Answer: React.FC<apiProps> = ({ result }) => {
         <div className="synonym">
           <p className="synonym-title">Synonyms</p>
           <ul className="synonym-ul">
-            {meanings[1].synonyms.map((obj: any, index: any) => (
+            {meanings[1].synonyms.map((obj: string, index: number) => (
               <li key={index} className="synonym-li">
                 {obj}
               </li>
@@ -119,7 +132,7 @@ const Answer: React.FC<apiProps> = ({ result }) => {
             <section className="nounblock">
               <h3>Meaning</h3>
               <ul className="nounblock-ul">
-                {meanings[2].definitions.map((obj: any) => (
+                {meanings[2].definitions.map((obj: definitionsType) => (
                   <>
                     <li className="nounblock-li">{obj.definition}</li>
                     <p className="nounblock-p">{obj.example}</p>
@@ -133,7 +146,7 @@ const Answer: React.FC<apiProps> = ({ result }) => {
             <div className="synonym">
               <p className="synonym-title">Synonyms</p>
               <ul className="synonym-ul">
-                {meanings[2].antonyms.map((obj: any, index: any) => (
+                {meanings[2].antonyms.map((obj: string, index: number) => (
                   <li key={index} className="synonym-li">
                     {obj}
                   </li>
@@ -146,7 +159,7 @@ const Answer: React.FC<apiProps> = ({ result }) => {
             <div className="synonym">
               <p className="synonym-title">Synonyms</p>
               <ul className="synonym-ul">
-                {meanings[2].synonyms.map((obj: any, index: any) => (
+                {meanings[2].synonyms.map((obj: string, index: number) => (
                   <li key={index} className="synonym-li">
                     {obj}
                   </li>

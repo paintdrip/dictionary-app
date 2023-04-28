@@ -7,9 +7,11 @@ import moon from './assets/img/icon-moon.svg';
 import axios from 'axios';
 import Answer from './components/Answer';
 import LoadingBlock from './components/LoadingBlock';
+import { useTheme } from './hooks/useTheme';
+import { Theme } from './context/ThemeContext';
 
 function App() {
-  const [theme, setTheme] = React.useState(false);
+  const theme = useTheme();
   const [keyWord, setKeyWord] = React.useState('');
   const [result, setResult] = React.useState(null);
   const [isloading, setIsloading] = React.useState(false);
@@ -29,13 +31,18 @@ function App() {
     }
   }
 
+  function changeTheme() {
+    theme.changeTheme(theme.theme === Theme.DARK ? Theme.LIGHT : Theme.DARK);
+  }
+
   function handleClear() {
     setKeyWord('');
     setResult(null);
   }
 
-  const changeHandler = (e: any) => {
-    setKeyWord(e.target.value);
+  const changeHandler = (e: React.FormEvent) => {
+    const target = e.target as HTMLInputElement;
+    setKeyWord(target.value);
   };
 
   return (
@@ -52,7 +59,7 @@ function App() {
               <img src={moon} alt="logo" className="moon-logo" />
             </div>
             <label className="switch">
-              <input type="checkbox" className="switch-input" onChange={() => setTheme(!theme)} />
+              <input type="checkbox" className="switch-input" onChange={changeTheme} />
               <span className="switch-span"></span>
             </label>
           </div>
