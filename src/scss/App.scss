@@ -192,7 +192,7 @@ body {
 .source {
   margin-top: 1.5rem;
   padding-top: 1.5rem;
-  border-top: 1px solid white;
+  border-top: 1px solid var(#{--textcolor-default});
 
   &-ul {
     margin-top: 0.5rem;
